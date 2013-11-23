@@ -243,8 +243,7 @@ public class ConnectServlet extends JsonRestServlet {
  * @throws EntityExistsException 
  * @throws DaoException 
    */
-  private User saveTokenForUser(String tokenGoogleUserId,
-      GoogleCredential credential) throws GoogleApiException, DaoException, EntityExistsException {
+  private User saveTokenForUser(String tokenGoogleUserId, GoogleCredential credential) throws GoogleApiException, DaoException, EntityExistsException {
     User user = ofy().load().type(User.class)
         .filter("googleUserId", tokenGoogleUserId).first().get();
     if (user == null) {

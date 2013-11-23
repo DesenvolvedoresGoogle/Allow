@@ -1,11 +1,10 @@
 $(function() {
-
-	var servidor = "http://1.alowdevbus.appspot.com/rest/v1/alows";
-
+	var servidor = "";
+	
 	$.getJSON( servidor+'/rest/v1/alows', function( data ) {
 	   var items = [];
 	   $.each( data, function( key, val ) {
-	    items.push( '<div class="list notify" data-id="'+ val.alow.id +'"><div class="info"><span class="group">'+ val.alow.grupoId +'</span> <h3>'+ val.alow.texto +'</h3></div><ul class="options"><li class="report">Relatorio</li><li class="exlude icon-trash"></li></ul></div>' );
+	    items.push( '<div class="list notify" data-id="'+ val.alow.id +'"><div class="info"><span class="group">Vendas</span> <h3>'+ val.alow.texto +'</h3></div><ul class="options"><li class="report">Relatorio</li><li class="exlude icon-trash"></li></ul></div>' );
 	  });
 
 	  $( "<div/>", {
@@ -17,7 +16,7 @@ $(function() {
 	  	$('.options li.exlude').click( function(e) {
 	  		console.log( $(this).parent().parent().data('id') );
 	  		$.ajax({
-
+	  			
 		        url: servidor+'/rest/v1/alows/'+$(this).parent().parent().data('id'),
 		        type: 'delete',
 		        dataType: 'json',
@@ -25,9 +24,9 @@ $(function() {
 		        	//$(this).parent().parent().remove();
 	        	//}
 	   	 	});
-
+	  		
 	  		$(this).parent().parent().remove();
-
+	  		
 	  		e.preventDefault();
 		});
 
@@ -66,7 +65,7 @@ $(function() {
 
 	    return json;
 	}
-
+	
 	//Post Alow
 	$('#sendalow').click( function(e) {
 	    $.ajax({
@@ -74,8 +73,9 @@ $(function() {
 	        type: 'post',
 	        dataType: 'json',
 	        contentType: "application/json;charset=UTF-8",
-	        data: ConvertFormToJSON( $('form.notificacao') )
+	        data: JSON.stringify(ConvertFormToJSON( $('form.notificacao') ))
    	 	});
+	    
 	    e.preventDefault();
 	});
 
