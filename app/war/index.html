@@ -38,16 +38,6 @@
 
             <h2>Alow <span class="numalow">2</span></h2>
 
-            <div class="list notify">
-                <div class="info">
-                                     <span class="group">Grupo#1</span> <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type </h3>
-                </div>
-                <ul class="options">
-                    <li class="report">Relatorio</li>
-                    <li class="exlude icon-trash"></li>
-                </ul>
-            </div>
-
         </section>
 
 
@@ -68,15 +58,14 @@
 
                     <div class="etapa2" id="notify">
                         <form method="post" class="notificacao"  action="">
-                            <label>Grupos</label>
-                            <select name="gruposLista">
-                                <option>Grupos</option>
-                            </select>
+                            
 
                             <br/><br/>
 
                             <label>Notificação</label>
-                            <textarea name="msg"></textarea>
+                            <textarea name="texto"></textarea>
+                            <input type="hidden" name="grupoId" value="4925812092436480" />
+                            <input type="hidden" name="pessoaId" value="6333186975989760" />
 
 
                             <input type="submit" class="button submit" id="sendalow" value="Enviar" />

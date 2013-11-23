@@ -4,12 +4,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import com.alow.dao.AlowDao;
 import com.alow.dao.DaoFactory;
@@ -23,9 +22,6 @@ import com.alow.service.impl.PessoaServiceImpl;
 import com.alow.validacao.AlowVerifier;
 import com.google.appengine.api.urlfetch.HTTPMethod;
 import com.google.appengine.api.urlfetch.HTTPRequest;
-import com.google.appengine.api.urlfetch.HTTPResponse;
-import com.google.appengine.api.urlfetch.URLFetchService;
-import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 
 public class AlowCrudServiceImpl extends CrudServiceAbs<Alow,Long>{
 	
@@ -73,9 +69,10 @@ public class AlowCrudServiceImpl extends CrudServiceAbs<Alow,Long>{
 		
 		String devices[] = (String[]) pessoa.getDevices().toArray();
 		*/
-		String dev[] = {"8efb3630b434271e"};
+		String dev[] = {"APA91bGL4SxBUmCE_kQLvhrQRvVLgZL56H3W1bqPKMdNelOkU2DlMA3jsjWII1rwK15J72hrP6bSFcu-vfhosjJoFBJ2amyVMRFzOSwtKeIExTlzvBBEFYAfQ_QBg8dABitu2NA7D7xki0Irq9t12-fdchfrxmnfgA"};
+		//String dev[] = {"APA91bHCZFd4btlYzkpF5yPQ0iF-8Q5VReXr5MpFTVFAzayi-bsRPfDVbWkWPZQoNX99vCCppCDpbQy352bkMWkK-xzUJfArHyWz_VdiyhSGwULg8YB_lhZyzgXM2-1vi3Cmj_8YF8IZ0Mb7gqlKcEgUtKMvN3z9kw"};
 		try {
-			sendMessage(dev, ent.getTexto(), "Inacio Fixo", "");
+			sendMessage(dev, ent.getTexto(), "Jose Inacio Silva Junior", "http://alowdevbus.appspot.com/img/photo.jpg");
 		} catch (IOException e) {
 			e.printStackTrace();
 			//TODO tratar
@@ -153,7 +150,7 @@ public class AlowCrudServiceImpl extends CrudServiceAbs<Alow,Long>{
 
 		byte[] postData = formData.toString().getBytes("UTF-8");
 		URL url = new URL("https://android.googleapis.com/gcm/send");
-		HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setDoOutput(true);
 		conn.setUseCaches(false);
 		conn.setRequestMethod("POST");
